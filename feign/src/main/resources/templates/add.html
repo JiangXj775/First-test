@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}">
+    <script th:src="@{/webjars/jquery/3.5.1/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>添加用户</h1>
+    <form class="form-horizontal" th:action="@{/addemp}" method="新增">
+        <input type="hidden" name="empId" th:value="${hxempList.empId}" />
+        <div class="form-group">
+            <label for="empName" class="col-sm-2 control-label">员工名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="empName"  id="empName" placeholder="empName" th:value="${hxempList.empName}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="empName" class="col-sm-2 control-label">员工部门</label>
+        <div class="col-sm-10">
+            <select  id="empDept" name="empDept"  class="form-control"  th:value="${hxempList.empDept}"  >
+                <option th:selected="${hxempList.empDept==1}" value='1'>后勤部</option>
+                <option th:selected="${hxempList.empDept==2}" value='2'>人事部</option>
+                <option th:selected="${hxempList.empDept==3}" value='3'>技术部</option>
+                <option th:selected="${hxempList.empDept==3}" value='3'>董事会</option>
+            </select>
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="empPost" class="col-sm-2 control-label">岗位</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="empPost"  id="empPost" placeholder="empPost" th:value="${hxempList.empPost}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="empDuty" class="col-sm-2 control-label">职责</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="empDuty"  id="empDuty" placeholder="empDuty" th:value="${hxempList.empDuty}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="提交" class="btn btn-info" />
+                <a th:href="@{/findemp}" class="btn btn-info">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

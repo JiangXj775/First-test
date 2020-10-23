@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}">
+    <script th:src="@{/webjars/jquery/3.5.1/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>用户列表</h1>
+    <div class="text-left">
+        <a class="btn btn-info" th:href="@{toAdd}">新增</a>
+        <a class="btn btn-info" th:href="@{bb}">按钮</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>员工名称</th>
+            <th>员工部门</th>
+            <th>入职日期</th>
+            <th>岗位</th>
+            <th>职责</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e : ${empList}">
+            <td th:text="${e.empId}"></td>
+            <td th:text="${e.empName}"></td>
+            <td th:text="${e.empDept}"></td>
+            <td th:text="${e.empDate}"></td>
+            <td th:text="${e.empPost}"></td>
+            <td th:text="${e.empDuty}"></td>
+            <td>
+                <a th:href="@{/huiSelect(empId=${e.empId})}">修改</a>
+            </td>
+            <td>
+                <a th:href="@{/deleteById(empId=${e.empId})}">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

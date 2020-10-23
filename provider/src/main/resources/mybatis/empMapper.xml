@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jxj.mapper.empMapper">
+    <select id="findemp" resultType="emp">
+        select * from emp a LEFT JOIN dept b on a.emp_dept=b.dept_id
+    </select>
+    <insert id="addemp">
+        insert into emp (emp_name,emp_dept,emp_date,emp_post,emp_duty) values (#{empName},#{empDept},sysdate(),#{empPost},#{empDuty})
+    </insert>
+    <delete id="deleteById">
+        delete from emp where emp_id = #{empId}
+    </delete>
+    <select id="selectById" resultType="emp">
+        select * from emp where emp_id = #{empId}
+    </select>
+    <update id="updateemp">
+        update emp set emp_name = #{empName},emp_dept = #{empDept},emp_post =#{empPost},emp_duty = #{empDuty} where emp_id = #{empId}
+    </update>
+</mapper>
